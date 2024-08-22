@@ -1,0 +1,32 @@
+<div class="d-flex justify-content-center py-4">
+
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <h1 class="h3 mb-3 fw-normal">Registre-se</h1>
+    <div class="form-floating">
+       <input type="text" class="form-control"
+       id="floatingName" placeholder="João" formControlName="name">
+      <label for="floatingName">Nome</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="email" class="form-control"
+      id="floatingEmail" placeholder="name@example.com"
+        formControlName="email">
+      <label for="floatingEmail">Email</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="password" class="form-control"
+      id="floatingPassword"  formControlName="password">
+     <label for="floatingPassword">Senha</label>
+   </div>
+
+   <div class="form-floating">
+    <input type="password" class="form-control"
+    id="floatingConfirm"  formControlName="confirmPassword">
+   <label for="floatingConfirm">Confirmar Senha</label>
+   <div *ngIf="registerForm.get('confirmPassword')?.errors?.['confirmedValidator']">As senhas não coincidem</div>
+  </div>
+  <button class="btn btn-primary w-100 py-2">Registrar</button>
+  </form>
+</div>

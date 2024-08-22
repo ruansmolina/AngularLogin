@@ -4,6 +4,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PublicComponent } from './pages/public/public.component';
 import { PrivateComponent } from './pages/private/private.component';
 import { AuthorizeGuard } from './guard/authorize.guard';
+import { RegisterComponent } from './pages/register/register.component';
 
 const routes: Routes = [
   {
@@ -23,11 +24,15 @@ const routes: Routes = [
     path:'private',
     component:PrivateComponent,
     canActivate:[AuthorizeGuard]
+  },{
+    path:'register',
+    component:RegisterComponent
   },
   {
     path:'**',
     redirectTo:'home'
   }
+
 ];
 
 @NgModule({

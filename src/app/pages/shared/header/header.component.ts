@@ -12,10 +12,10 @@ export class HeaderComponent {
 
   }
   getStatus(){
-    console.log(this.authService.status());
+    console.log(this.authService.getToken());
   }
   logout(){
-    this.authService.logout();
+    this.authService.removeToken();
   }
 
 }

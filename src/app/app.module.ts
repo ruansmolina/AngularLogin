@@ -8,6 +8,8 @@ import { PublicComponent } from './pages/public/public.component';
 import { PrivateComponent } from './pages/private/private.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './pages/shared/header/header.component';
+import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import { HeaderComponent } from './pages/shared/header/header.component';
     LoginComponent,
     PublicComponent,
     PrivateComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

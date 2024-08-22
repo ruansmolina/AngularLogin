@@ -13,8 +13,13 @@ export class AuthorizeGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    console.log(this.authService.status())
-    return this.authService.status();
+    console.log(this.authService.isAuthenticated())
+    if (this.authService.isAuthenticated()) {
+      return true;
+    } else {
+
+      return false;
+    }
   }
 
 }

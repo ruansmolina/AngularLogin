@@ -23,9 +23,9 @@
     </label>
   </div>
   <button class="btn btn-primary w-100 py-2" [disabled]="!loginForm.valid">Entrar</button>
-  <!-- <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p> -->
-  <div class="alert alert-primary alert-dismissible fade show {{alertaStatus}}" role="alert">
-    Logado com sucesso.
+  <div class="alert alert-{{type}} {{resultado}}" role="alert">
+
+    {{mensagem}}
     <button type="button" class="btn-close"
     data-bs-dismiss="alert" aria-label="Close"></button>
   </div>

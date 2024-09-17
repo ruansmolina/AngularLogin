@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Login } from 'src/app/interface/login';
 import { AuthorizeService } from 'src/app/service/authorize.service';
 
@@ -11,13 +12,17 @@ import { AuthorizeService } from 'src/app/service/authorize.service';
 export class LoginComponent implements OnInit{
 
   loginForm!: FormGroup;
+  resultado: string = 'fade';
+  mensagem:string ='';
+  type:string='';
   loginAcc:Login = {
     email:'',
     password:''
   };
   alertaStatus='d-none'
   constructor(private formBuilder:FormBuilder,
-    private service:AuthorizeService
+    private service:AuthorizeService,
+    private router: Router
   ){}
   ngOnInit(): void {
     this.createForm();
@@ -35,12 +40,26 @@ export class LoginComponent implements OnInit{
   login(){
     this.loginAcc.email = this.loginForm.value.email;
     this.loginAcc.password = this.loginForm.value.password;
-    if(this.service.login(this.loginAcc)){
-      this.alertaStatus = '';
-      setTimeout(()=>{
-         this.alertaStatus = 'd-none'
-      },3000 )
-    }
+
+    this.service.login(this.loginForm.value.email,this.loginForm.value.password)
+    .subscribe(
+      () =>{
+        this.mensagem = 'Logado com sucesso';
+        this.resultado= 'show'
+        this.type = 'sucess';
+        setTimeout(()=> {this.resultado='fade'}, 5000);
+        this.router.navigate(['/private']);
+      } ,
+      error => {
+        this.mensagem = 'E-mail ou senha invalido';
+        this.type = 'warning';
+        this.resultado= 'show'
+        setTimeout(()=> {this.resultado='fade'}, 5000);
+      }
+
+
+
+    );
 
   }
 

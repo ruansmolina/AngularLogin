@@ -17,5 +17,8 @@ export class HeaderComponent {
   logout(){
     this.authService.removeToken();
   }
+  isAuthenticated(){
+    return this.authService.isAuthenticated();
+  }
 
 }

@@ -18,10 +18,10 @@
       </form> -->
 
       <div class="text-end">
-        <button type="button" class="btn btn-outline-light me-2" routerLink="/home">Login</button>
-        <button type="button" class="btn btn-outline-light me-2" (click)="logout()">Logout</button>
+        <button type="button" *ngIf="!isAuthenticated()"class="btn btn-outline-light me-2" routerLink="/home">Login</button>
+        <button type="button" *ngIf="isAuthenticated()" class="btn btn-outline-light me-2" (click)="logout()">Logout</button>
         <button type="button" class="btn btn-outline-light me-2" routerLink="/register">Registrar</button>
-        <!-- <button type="button" class="btn btn-warning">Sign-up</button> -->
+
       </div>
     </div>
   </div>
